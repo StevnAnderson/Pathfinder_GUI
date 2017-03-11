@@ -106,3 +106,27 @@ div.tab button.active {
     width:100%;
     min-height: 80vh;
 }
+
+
+.numPad{
+    display:flex;
+    width:30%;
+    flex-wrap:wrap;
+}
+
+.numP{
+    width:30%;
+    height:5vh;
+    background-color:aqua;
+    border:solid;
+}
+
+.numPadTextClass{
+    width:92.75%;
+}
+
+.diceCalcText{
+   height: 83%;
+    width: 99%;
+}
+
