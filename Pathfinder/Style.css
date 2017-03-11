@@ -101,7 +101,6 @@ div.tab button.active {
     display:flex;
     width:30%;
     flex-wrap:wrap;
-
 }
 
 .numP{
@@ -118,17 +117,4 @@ div.tab button.active {
 .diceCalcText{
    height: 83%;
     width: 99%;
-}
-
-.historyClass{
-    width:100%;
-    min-height: 80vh;
-}
-
-.spells{
-    display:flex;
-}
-
-.spellData{
-
 }
