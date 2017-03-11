@@ -78,3 +78,4 @@ function rollD20() {
     confirm(roll);
     addDiceHistory(20, roll);
 }
+
