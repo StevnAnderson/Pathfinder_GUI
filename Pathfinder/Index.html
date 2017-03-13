@@ -4,15 +4,15 @@
   <script src="jquery-3.1.1.js" type="text/javascript"></script>
   <script src="Controler.js" type="text/javascript"></script>
   <script src="Model.js" type="text/javascript"></script>
-
+ <script src="https://use.fontawesome.com/8d222c2bc2.js"></script>
 </head>
 
 <body>
     <div class="display">
         <div class="leftDisplay">
             <div class="mainButtonTable">
-                <div class="buttonHeight"><button class="mainButton" onclick="diceToggle()">Dice</button></div>
-                <div class="buttonHeight"><button class="mainButton"  onclick="notesToggle()">Notes</button></div>
+                <div class="buttonHeight"><button class="mainButton" id="MyDiceButton">Dice</button></div>
+                <div class="buttonHeight"><button class="mainButton" id="MyNotesButton">Notes</button></div>
                 <div class="buttonHeight"><button class="mainButton">Spells</button></div>
                 <div class="buttonHeight"><button class="mainButton">Equipment</button></div>
             </div>
@@ -44,20 +44,19 @@
                     </div>
                            <div class="numPad">
                            <div class="numPad0 numP numPadTextClass"><input type="text"class="diceCalcText"id="numPadText"/></div>
-                           <div class="numPad1 numP">1</div>
-                           <div class="numPad2 numP">2</div>
-                           <div class="numPad3 numP">3</div>
-                           <div class="numPad4 numP">4</div>
-                           <div class="numPad5 numP">5</div>
-                           <div class="numPad6 numP">6</div>
-                           <div class="numPad7 numP">7</div>
-                           <div class="numPad8 numP">8</div>
-                           <div class="numPad9 numP">9</div>
-                           <div class="numPad10 numP">-</div>
-                           <div class="numPadPlus numP">0</div>
-                           <div class="numPadMinus numP">+</div>
+                           <div class="numPad1 numP" onclick="diceCalcType(1)">1</div>
+                           <div class="numPad2 numP" onclick="diceCalcType(2)">2</div>
+                           <div class="numPad3 numP" onclick="diceCalcType(3)">3</div>
+                           <div class="numPad4 numP" onclick="diceCalcType(4)">4</div>
+                           <div class="numPad5 numP" onclick="diceCalcType(5)">5</div>
+                           <div class="numPad6 numP" onclick="diceCalcType(6)">6</div>
+                           <div class="numPad7 numP" onclick="diceCalcType(7)">7</div>
+                           <div class="numPad8 numP" onclick="diceCalcType(8)">8</div>
+                           <div class="numPad9 numP" onclick="diceCalcType(9)">9</div>
+                           <div class="numPadPlus numP" onclick="diceCalcType(0)">0</div>
+                           <div class="numPadMinus numP" onclick="backspace()"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
                        </div>
-                    <div id="Saves" class="tabcontent">
+                    <!-- <div id="Saves" class="tabcontent">
                         <h3></h3>
                         <table class="diceSavesTable">
                             <tr>
@@ -85,11 +84,12 @@
                                 <td>create</td>
                             </tr>
                         </table>
-                    </div>
+                    </div> -->
 
-                    <div id="history" class="tabcontent">
+                    <div id="history" class="tabcontent historyClass">
                         <h3>History</h3>
                         <p>
+                            <textarea contenteditable="true" type="text" class="historyClass" id="hisstory"></textarea>
                             <table id="diceHistoryTable">
                                 <tr></tr>
                             </table>
@@ -102,8 +102,69 @@
                     <!--<span class="notesText" contenteditable="true" </span>-->
 
                 </div>
+                <div class="midDisplay" id="spells">
+                     <div class="spell">
+                         <div class="spellData spellName">Name: <input type="text" /></div>
+                         <div class="spellData spellLevel">Lvl: <select>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2<option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                    <option value="13">13</option>
+                                                                    <option value="14">14</option>
+                                                                    <option value="15">15</option>
+                                                                    <option value="16">16</option>
+                                                                    <option value="17">17</option>
+                                                                    <option value="18">18</option>
+                                                                    <option value="19">19</option>
+                                                                    <option value="20">20</option>
+                             </select></div>
+                         <div class="spellData spellSchool">School:<select>
+                                                                         <option value="Abjuration">Abjuration</option>
+                                                                       <option value="Conjuration">Conjuration</option>
+                                                                       <option value="Divination">Divination</option>
+                                                                       <option value="Enchantment">Enchantment</option>
+                                                                       <option value="Evocation">Evocation</option>
+                                                                       <option value="Illusion">Illusion</option>
+                                                                       <option value="Necromancy">Necromancy</option>
+                                                                       <option value="Transmutation">Transmutation</option>
+                                                                       <option value="Universal">Universal</option>
+                             </select> </div>
+                         <div class="spellData castingTime">Casting Time: <select>
+                                                                                 <option value="Swift">Swift</option>
+                                                                              <option value="Standard">Standard</option>
+                                                                              <option value="Full">Full</option>
+                                                                              <option value="Minute">Minute</option>
+                                                                              <option value="Other">Other</option>
+                             </select></div>
+                         <div class="spellData components"><input type="checkbox" name="spellComponentes" value="Verbal" />Verbal
+                                                           <input type="checkbox" name="spellComponentes" value="Somatic" />Somatic
+                                                            <input type="checkbox" name="spellComponentes" value="Material " />Material
+                         </div>
+                         <div class="spellData spellRange"></div>
+                         <div class="spellData spellTarget"></div>
+                         <div class="spellData spellDuration"></div>
+                         <div class="spellData spellST"></div>
+                         <div class="spellData spellResist"></div>
+                         <div class="spellData spellInfo"></div>
+                         <div class="spellData nextSpell"></div>
+
+
+                     </div>
+                 </div>
+                             </div><!--End class content-->
+         </div><!--End class showAll-->
+
             </div>
-        </div>
+
 
 
         </div>
