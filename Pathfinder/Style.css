@@ -8,6 +8,13 @@ body{
     float:left;
    /* background-color: black;*/
 }
+button {
+    border-radius: 500px;
+}
+.buttonHeight{
+  height: 18vh;
+  border-radius: 50%
+}
 .mainButtonTable{
     border:medium;
     background-color:aqua;
@@ -15,6 +22,9 @@ body{
     border-bottom:solid;
     height:98vh;
     width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 td{
     border:solid;
@@ -22,8 +32,8 @@ td{
 .mainButton{
     height: 100%;
     width: 100%;
-    
-   
+
+
 }
 .content{
     width:84%;
@@ -45,7 +55,7 @@ div.tab {
     background-color: #f1f1f1;
 }
 
- Style the buttons inside the tab 
+ Style the buttons inside the tab
 div.tab button {
     background-color: inherit;
     float: left;
@@ -68,7 +78,7 @@ div.tab button.active {
 
 /* Style the tab content */
 .tabcontent {
-    display: none;
+    /*display: none;*/
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
@@ -90,7 +100,8 @@ div.tab button.active {
 }
 
 .midDisplay{
-    display:none;
+    /*display:none;*/
+    text-align: center;
 }
 .notesText{
     width:100%;
